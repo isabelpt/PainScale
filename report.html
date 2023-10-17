@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <style>
+    body {
+      /* 
+      background-image: url('static/gradient.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0; 
+      */
+      /* Gradient made with coolors.co */
+      /* background: hsla(244, 54%, 15%, 1);
+
+      background: radial-gradient(circle, hsla(244, 54%, 15%, 1) 46%, hsla(141, 27%, 32%, 1) 93%);
+
+      background: -moz-radial-gradient(circle, hsla(244, 54%, 15%, 1) 46%, hsla(141, 27%, 32%, 1) 93%);
+
+      background: -webkit-radial-gradient(circle, hsla(244, 54%, 15%, 1) 46%, hsla(141, 27%, 32%, 1) 93%);
+
+      filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#15123D", endColorstr="#3C694C", GradientType=1 );     */
+      background-color: #334240;
+      background-size: cover;
+      background-repeat: no-repeat;
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0; 
+      font-family: "Open Sans", sans-serif;
+      color: white;
+    }
+
+    h1, .head2 {
+      text-align: center;
+    }
+
+    .head2 {
+        font-size: 50px;
+    }
+
+    h1 {
+      font-size: 90px;
+      /* padding-bottom: 5%; */
+    }
+
+
+    .button_container {
+      position: relative;
+      width: 100%;
+
+    }
+
+    button {
+      /* padding: 10px 20px;
+      font-size: 18px; */
+      font-family: "Roboto", sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 1px;
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 50px;
+      transition: 0.5s;
+      line-height: 1;
+      margin: 10px;
+      color: #fff;
+      animation-delay: 0.8s;
+      border: 2px solid #1ED760;
+      background-color: #334240;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 4%;
+      
+    }
+
+    button :hover{
+      background-color: #1ED760;
+      transition: 0.5s;
+    }
+
+    .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%; 
+    height: 60%;
+    margin: 20px auto; 
+    }
+
+    .grid-row {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    }
+
+    .grid-item {
+    flex: 1;
+    width: 500px; 
+    height: 350px; 
+    border-radius: 20px; 
+    background-color: white; 
+    color: #334240; 
+    display: block;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 10px; 
+    }
+
+    .green {
+        color: #1ED760;
+    }
+
+    .grid-item h2 {
+        text-align: left;
+        padding: 5px;
+        padding-left: 30px;
+        font-size: 40px;
+    }
+
+    .grid-item h3 {
+        padding-left: 30px;
+    }
+    .grid_text {
+        text-align: left;
+        padding-left: 30px;
+        display: block;
+    }
+
+    .album_pic {
+        width: 75px;
+        height: 75px;
+        float: left;
+        padding: 5px;
+        padding-left: 30px;
+        padding-right: 10px;
+    }
+
+    .song_text {
+        display: inline-block;
+        margin-top: 30px;
+    }
+
+    .title {
+        display: block;
+        margin-top: 150px;
+    }
+
+    .analysis {
+    float: left;
+    margin-left: 10%;
+    width: 80%; 
+    padding-top: 28px;
+    height: 90px; 
+    border-radius: 20px; 
+    background-color: white; 
+    color: #334240; 
+    display: block;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* margin: 10px;  */
+    margin-bottom: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    }
+
+    .gap {
+        margin-top: 250px;
+    }
+
+    .space {
+        margin-top: 450px;
+    }
+
+    iframe {
+        float: left;
+        margin-left: 10%;
+        margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+    <h1><span class="green">SpotiCry</span> Report</h1>
+    <h2 class="head2">The vibe of your recent listening</h2>
+    <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-item">
+            <h2>Valence</h2>
+            <p class = "grid_text">Your music is {{ val_c }}% {{ val_s }} than usual.</p>
+            <p class = "grid_text">On average, your music is {{ val_a }}% happy.</p>
+            <h3>Best example:</h3>
+            <img class="album_pic" src={{ val_t[2] }}>
+            <p class="song_text"><b>{{ val_t[0] }}</b></p>
+            <p class="song_text"> by {{ val_t[1] }}</p>
+        </div>
+          <div class="grid-item">
+            <h2>Danceability</h2>
+            <p class = "grid_text">Your music is {{ dance_c }}% {{ dance_s }} than usual.</p>
+            <p class = "grid_text">On average, your music is {{ dance_a }}% danceable.</p>
+            <h3>Best example:</h3>
+            <img class="album_pic" src={{ dance_t[2] }}>
+            <p class="song_text"><b>{{ dance_t[0] }}</b></p>
+            <p class="song_text"> by {{ dance_t[1] }}</p>
+          </div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-item">
+            <h2>Energy</h2>
+            <p class = "grid_text">Your music is {{ energy_c }}% {{ energy_s }} than usual.</p>
+            <p class = "grid_text">On average, your music is {{ energy_a }}% energetic.</p>
+            <h3>Best example:</h3>
+            <img class="album_pic" src={{ energy_t[2] }}>
+            <p class="song_text"><b>{{ energy_t[0] }}</b></p>
+            <p class="song_text"> by {{ energy_t[1] }}</p>
+          </div>
+          <div class="grid-item">
+            <h2>Tempo</h2>
+            <p class = "grid_text">Your music is {{ tempo_c }}% {{ tempo_s }} than usual.</p>
+            <p class = "grid_text">Your recent average tempo is {{ tempo_a }} BPM.</p>
+            <h3>Best example:</h3>
+            <img class="album_pic" src={{ tempo_t[2] }}>
+            <p class="song_text"><b>{{ tempo_t[0] }}</b></p>
+            <p class="song_text"> by {{ tempo_t[1] }}</p>
+          </div>
+        </div>
+      </div>
+      <h2 class="head2 title gap">Analysis</h2>
+      <div class="analysis">
+        {{ val_q }}
+      </div>
+      <div class="analysis">
+        {{ dance_q }}
+        </div>
+        <div class="analysis">
+            {{ energy_q }}
+        </div>
+      <h2 class="head2 title space">Recommendations</h2>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1vYXt7VSjH9JIM5oRRo7vA?utm_source=generator" width="80%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1BxfuPKGuaTgP7aM0Bbdwr?utm_source=generator" width="80%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1xZyqMoN55Rd5WD8cHSva8?utm_source=generator" width="80%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0BLY78hYpsH9NqP6X0N8CX?utm_source=generator" width="80%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1BwhFXqoIsePt21WyWIttb?utm_source=generator" width="80%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
+</body>
+</html>
+
+<!-- <button id="runScriptButton">Run Python Script</button> -->
+<script>
+  document.getElementById('runScriptButton').addEventListener('click', function() {
+    // Send an AJAX request to the Flask server
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/run-script', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        console.log(xhr.responseText);
+      }
+    };
+    xhr.send();
+  });
+</script>
